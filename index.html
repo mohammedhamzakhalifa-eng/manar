@@ -1089,7 +1089,7 @@
     <div class="promise-popup" onclick="event.stopPropagation()">
       <div class="promise-popup-title">وعدي الأبدي لكي 💕</div>
       <div class="promise-popup-text" id="promise-popup-text">أوعدك أكون دايماً أمانك وسندك في أوقاتك الصعبة 🤍</div>
-      <button class="promise-close-btn" onclick="closePromisePopup(event)">حفظته في قلبي 🔒❤️</button>
+      <button class="promise-close-btn" onclick="closePromisePopup(event)">حفظته في قلبي ❤️</button>
     </div>
   </div>
 
@@ -1255,15 +1255,34 @@ function showView(name, btn) {
 }
 
 // Typing effect
+// const letterMsg = [
+//   { text: 'انتِ مش بس حبيبي...', highlight: false },
+//   { text: ' انتِ الشخص اللي بيخلي يومي أحلى،', highlight: false },
+//   { text: ' اللي بيخليني أحس إن في حاجة تستاهل أتعب عشانها.', highlight: true },
+//   { text: '\n\nمش محتاج مناسبة عشان أقولك إنك دنيتي كلها،', highlight: false },
+//   { text: ' لأن ده مش كلام مناسبات...', highlight: false },
+//   { text: ' ده إحساس كل يوم وكل لحظة.', highlight: true },
+//   { text: '\n\nبحبك. 💕', highlight: false }
+// ];
+
+ 
 const letterMsg = [
-  { text: 'انتِ مش بس حبيبي...', highlight: false },
-  { text: ' انتِ الشخص اللي بيخلي يومي أحلى،', highlight: false },
-  { text: ' اللي بيخليني أحس إن في حاجة تستاهل أتعب عشانها.', highlight: true },
-  { text: '\n\nمش محتاج مناسبة عشان أقولك إنك دنيتي كلها،', highlight: false },
-  { text: ' لأن ده مش كلام مناسبات...', highlight: false },
-  { text: ' ده إحساس كل يوم وكل لحظة.', highlight: true },
-  { text: '\n\nبحبك. 💕', highlight: false }
+  { text: '<p>أنا مش بعرف أوصف قد إيه وجودك فرّق في حياتي...</p>', highlight: false },
+
+  { text: '<p>بس كل اللي أعرفه إنك بقيتي <span class="highlight">أول حد بييجي في بالي لما أصحى، وآخر حد بفكر فيه قبل ما أنام.</span></p>', highlight: true },
+
+  { text: '<p>وسط زحمة الدنيا والضغط والمشاكل، وجودك هو الحاجة الوحيدة اللي بتطمني وتخليني أكمل.</p>', highlight: false },
+
+  { text: '<p>يمكن مبقولهاش كل شوية، بس الحقيقة إنك <span class="highlight">مش مجرد شخص بحبه...</span></p>', highlight: true },
+
+  { text: '<p>إنتِ المكان اللي بروحله وأنا تعبان، والراحة اللي بدور عليها، والسبب اللي بيخليني أشوف بكرة بشكل أحلى.</p>', highlight: false },
+
+  { text: '<p><span class="highlight">ولو كان عندي فرصة أختار ألف مرة، في كل مرة كنت هاختارك إنتِ.</span></p>', highlight: true },
+
+  { text: '<p>بحبك أكتر من أي كلام ممكن يوصف، وأكتر من أي رسالة ممكن تتكتب. ❤️</p>', highlight: false }
 ];
+
+
 
 let fullText = '';
 let charIdx = 0;
@@ -1556,7 +1575,7 @@ const promisesList = [
   "أوعدك أكون دايماً أمانك وسندك في أوقاتك الصعبة ❤️",
   "أوعدك إن ضحكتك هتفضل هي أولويتي وأجمل حاجة في يومي 💕",
   "أوعدك نكبر سوا ونفضل نحب بعض زي أول يوم وأكتر 💍",
-  "أوعدك إني أسمعك دايماً، وأفهمك حتى لما تسكتي",
+  "أوعدك إني أسمعك دايماً، وأفهمك حتى لما تسكتي ❤️",
   "أوعدك أشاركك كل تفاصيل حياتي، وتكوني شريكة روحي وقراراتي ❤️",
   "أوعدك أحافظ عليكي كأنك أثمن حاجة ملكتها في دنيتي.. لأنك فعلاً كدة 💕"
 ];
