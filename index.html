@@ -891,6 +891,183 @@
     vertical-align: middle;
     border: 1px solid rgba(212, 169, 106, 0.25);
   }
+
+  /* ========== ONBOARDING LOVE TOUR ========== */
+  .tour-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(11, 8, 24, 0.4);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 9990;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .tour-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .tour-box {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(40px);
+    width: 90%;
+    max-width: 440px;
+    background: rgba(25, 18, 48, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(232, 130, 154, 0.35);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(232, 130, 154, 0.15);
+    z-index: 9995;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    text-align: center;
+    direction: rtl;
+  }
+
+  .tour-box.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .tour-title {
+    font-size: 18px;
+    color: var(--rose-light);
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .tour-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+    font-weight: 300;
+    min-height: 50px;
+  }
+
+  .tour-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .tour-hearts {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--rose);
+    user-select: none;
+  }
+
+  .tour-btns {
+    display: flex;
+    gap: 8px;
+  }
+
+  .tour-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .tour-btn-skip {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .tour-btn-skip:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .tour-btn-prev {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .tour-btn-prev:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .tour-btn-next {
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    color: white;
+    box-shadow: 0 4px 12px rgba(232, 130, 154, 0.3);
+    font-weight: 500;
+  }
+
+  .tour-btn-next:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(232, 130, 154, 0.5);
+  }
+
+  /* Spotlight Highlight effect */
+  .tour-highlight {
+    position: relative;
+    z-index: 9992 !important;
+    box-shadow: 0 0 0 9999px rgba(11, 8, 24, 0.75), 0 0 25px rgba(232, 130, 154, 0.5) !important;
+    pointer-events: none !important;
+    transition: box-shadow 0.3s ease !important;
+    border-color: rgba(232, 130, 154, 0.6) !important;
+  }
+
+  /* Replay Tour Floating Button */
+  .replay-tour-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(25, 18, 48, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(232, 130, 154, 0.3);
+    color: var(--rose-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 800;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .replay-tour-btn:hover {
+    transform: scale(1.1) rotate(15deg);
+    border-color: var(--rose);
+    color: white;
+    box-shadow: 0 6px 20px rgba(232, 130, 154, 0.4);
+  }
+
+  .replay-tour-btn:active {
+    transform: scale(0.95);
+  }
 </style>
 </head>
 <body>
@@ -1092,6 +1269,32 @@
       <button class="promise-close-btn" onclick="closePromisePopup(event)">حفظته في قلبي ❤️</button>
     </div>
   </div>
+
+  <!-- Love Tour Components -->
+  <div id="tour-overlay" class="tour-overlay" onclick="skipTour()"></div>
+  
+  <div id="tour-box" class="tour-box">
+    <h3 id="tour-title" class="tour-title">
+      <span id="tour-emoji" style="margin-left: 6px;">✨</span>
+      <span id="tour-title-text">رحلتنا الجميلة</span>
+    </h3>
+    <p id="tour-desc" class="tour-desc">جاري التحميل...</p>
+    <div class="tour-footer">
+      <div id="tour-hearts" class="tour-hearts">🤍🤍🤍🤍🤍🤍</div>
+      <div class="tour-btns">
+        <button id="tour-btn-skip" class="tour-btn tour-btn-skip" onclick="skipTour()">تخطي</button>
+        <button id="tour-btn-prev" class="tour-btn tour-btn-prev" onclick="prevTourStep()" style="display: none;">السابق</button>
+        <button id="tour-btn-next" class="tour-btn tour-btn-next" onclick="nextTourStep()">التالي</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Replay Tour Floating Button -->
+  <button class="replay-tour-btn" onclick="startLoveTour()" title="أعيدي الجولة التفاعلية 💕">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/>
+    </svg>
+  </button>
 
 </div>
 
@@ -1299,6 +1502,8 @@ letterMsg.forEach(seg => {
 });
 
 const el = document.getElementById('typed-text');
+let typingTimeout = null;
+
 function typeNext() {
   if (charIdx >= flatChars.length) {
     el.innerHTML = buildHTML(flatChars) + '';
@@ -1307,7 +1512,7 @@ function typeNext() {
   }
   charIdx++;
   el.innerHTML = buildHTML(flatChars.slice(0, charIdx)) + '<span class="cursor"></span>';
-  setTimeout(typeNext, charIdx < 5 ? 120 : 28 + Math.random() * 25);
+  typingTimeout = setTimeout(typeNext, charIdx < 5 ? 120 : 28 + Math.random() * 25);
 }
 
 function buildHTML(chars) {
@@ -1321,7 +1526,16 @@ function buildHTML(chars) {
   if (inH) html += '</span>';
   return html;
 }
-setTimeout(typeNext, 900);
+
+function startOrRestartTyping() {
+  if (typingTimeout) clearTimeout(typingTimeout);
+  charIdx = 0;
+  document.getElementById('sig').style.opacity = '0';
+  el.innerHTML = '<span class="cursor"></span>';
+  typeNext();
+}
+
+el.innerHTML = '<span class="cursor"></span>';
 
 // Stars background
 const bgC = document.getElementById('bg-canvas');
@@ -1644,6 +1858,190 @@ document.head.appendChild(styleExplode);
 const s = document.createElement('style');
 s.textContent = `@keyframes cfall{0%{opacity:1;transform:translateY(0) rotate(0) scale(1)}100%{opacity:0;transform:translateY(100vh) rotate(720deg) scale(0.3)}}`;
 document.head.appendChild(s);
+
+// ============================================
+// ONBOARDING LOVE TOUR LOGIC
+// ============================================
+const tourSteps = [
+  {
+    title: "أهلاً بيكي في عالمنا الصغير 💕",
+    desc: "كتبتلك وعملتلك المكان ده مخصوص عشان يعبر عن حبي لكي ومكانتك الكبيرة في قلبي. تعالي آخدك في جولة سريعة نكتشف فيها حكايتنا سوا 🌸",
+    emoji: "",
+    tab: "letter",
+    target: ".header"
+  },
+  {
+    title: "✉️ رسالتي ليكي من كل قلبي",
+    desc: "هنا كتبتلك كلام من جوا روحي.. أول ما نخلص الجولة، الصفحة هتفتح هنا تلقائياً والكلام هيبدأ يتكتب قدامك كلمة كلمة.. اقرئيه بكل هدوء وحسيه بقلبك 💕",
+    emoji: "",
+    tab: "letter",
+    target: ".letter-card"
+  },
+  {
+    title: "🌸 كروت 'ليه بحبك'",
+    desc: "هنا فيه 6 كروت رقيقة مخبية أسباب بتخليني أعشقك كل يوم أكتر... دوسي على الكروت واكتشفي الأسرار الجميلة اللي وراها!",
+    emoji: "",
+    tab: "petals",
+    target: ".petals-grid"
+  },
+  {
+    title: "💌 100 سبب يخلوني أدوب فيكي",
+    desc: "عشان حبي ليكي ملوش نهاية، جمعتلك هنا 100 سبب بيخلوني أحب كل تفصيلة فيكي. دوسي على أي رقم واقرئي السبب، وكل ما تفتحي سبب العداد هيزيد لغاية ما نوصل لـ 100 💕",
+    emoji: "",
+    tab: "reasons",
+    target: ".progress-wrap"
+  },
+  {
+    title: "🎵 أغنيتنا المميزة",
+    desc: "شغلي الأغنية دي (راسمك في خيالي لحماقي) اللي بتفكرني بيكي دايماً، واسمعيها وعيشي اللحظة وأنتِ بتكملي رحلتك في موقعنا 🎵",
+    emoji: "",
+    tab: "song",
+    target: ".song-card"
+  },
+  {
+    title: "📅 حكايتنا باليوم والثانية",
+    desc: "هنا بنحسب باليوم والساعة والدقيقة والثانية كل لحظة وكل نبضة عشناها سوا من أول يوم اتقابلنا فيه.. وكمان هتلاقي تواريخنا المميزة مسجلة تحت العداد ❤️",
+    emoji: "",
+    tab: "timeline",
+    target: ".counter-card"
+  },
+  {
+    title: "📜 جرة وعودي ليكي",
+    desc: "وآخر حاجة.. دي جرة الوعود.. كل ما تدوسي عليها أو على الزرار، هتفتحي عهد ووعد صادق مني ليكي هيفضل في قلبي وعمري كله.. احفظيه في قلبك ❤️",
+    emoji: "",
+    tab: "promises",
+    target: ".jar-container"
+  }
+];
+
+let currentTourStepIdx = 0;
+let isTourActive = false;
+
+function startLoveTour() {
+  // Clear and reset typing animation during tour
+  if (typingTimeout) clearTimeout(typingTimeout);
+  charIdx = 0;
+  document.getElementById('sig').style.opacity = '0';
+  document.getElementById('typed-text').innerHTML = '<span class="cursor"></span>';
+
+  currentTourStepIdx = 0;
+  isTourActive = true;
+  document.getElementById('tour-overlay').classList.add('active');
+  document.getElementById('tour-box').classList.add('active');
+  showTourStep(currentTourStepIdx);
+}
+
+function showTourStep(idx) {
+  const step = tourSteps[idx];
+  
+  // Update texts
+  document.getElementById('tour-title-text').textContent = step.title;
+  document.getElementById('tour-desc').textContent = step.desc;
+  document.getElementById('tour-emoji').textContent = step.emoji;
+  
+  // Hearts progress indicator
+  let heartsHtml = "";
+  for (let i = 0; i < tourSteps.length; i++) {
+    heartsHtml += i <= idx ? "💖" : "🤍";
+  }
+  document.getElementById('tour-hearts').innerHTML = heartsHtml;
+  
+  // Show/Hide buttons
+  document.getElementById('tour-btn-prev').style.display = idx === 0 ? 'none' : 'block';
+  
+  const nextBtn = document.getElementById('tour-btn-next');
+  if (idx === tourSteps.length - 1) {
+    nextBtn.textContent = "ابدئي الرحلة 💖";
+  } else {
+    nextBtn.textContent = "التالي";
+  }
+  
+  // Clear previous highlights
+  document.querySelectorAll('.tour-highlight').forEach(el => {
+    el.classList.remove('tour-highlight');
+  });
+  
+  // Automatically switch tab
+  if (step.tab) {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    let targetBtn = null;
+    tabBtns.forEach(btn => {
+      const onclickAttr = btn.getAttribute('onclick');
+      if (onclickAttr && onclickAttr.includes(`'${step.tab}'`)) {
+        targetBtn = btn;
+      }
+    });
+    
+    if (targetBtn) {
+      showView(step.tab, targetBtn);
+    }
+  }
+  
+  // Highlight target element with a smooth delay so tab switch completes
+  setTimeout(() => {
+    if (!isTourActive) return;
+    const targetEl = document.querySelector(step.target);
+    if (targetEl) {
+      targetEl.classList.add('tour-highlight');
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, 150);
+}
+
+function nextTourStep() {
+  if (currentTourStepIdx < tourSteps.length - 1) {
+    currentTourStepIdx++;
+    showTourStep(currentTourStepIdx);
+  } else {
+    finishTour();
+  }
+}
+
+function prevTourStep() {
+  if (currentTourStepIdx > 0) {
+    currentTourStepIdx--;
+    showTourStep(currentTourStepIdx);
+  }
+}
+
+function skipTour() {
+  endTour();
+}
+
+function finishTour() {
+  endTour();
+  launchConfetti();
+  setTimeout(launchHeartsConfetti, 300);
+  setTimeout(launchHeartsConfetti, 600);
+}
+
+function endTour() {
+  isTourActive = false;
+  document.getElementById('tour-overlay').classList.remove('active');
+  document.getElementById('tour-box').classList.remove('active');
+  
+  // Clear all highlights
+  document.querySelectorAll('.tour-highlight').forEach(el => {
+    el.classList.remove('tour-highlight');
+  });
+  
+  // Save in localStorage so it doesn't auto-start again
+  localStorage.setItem('loveTourCompleted', 'true');
+
+  // Automatically direct to "My Letter" (✉ رسالتي) and start typing!
+  const letterTabBtn = document.querySelectorAll('.tabs .tab-btn')[0]; // The first button is My Letter
+  if (letterTabBtn) {
+    showView('letter', letterTabBtn);
+  }
+  startOrRestartTyping();
+}
+
+// Auto-start on load always
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    startLoveTour();
+  }, 2000); // Small delay to let stars load beautifully
+});
 </script>
 </body>
 </html>
